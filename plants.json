@@ -1,0 +1,371 @@
+{
+  "lettuce": {
+    "name": "Lettuce",
+    "scientificName": "Lactuca sativa",
+    "category": "Leafy Green",
+    "source": "Controlled Environment Agriculture Guidelines v2.4",
+    "stages": {
+      "Seedling": {
+        "temperature": { "min": 16, "target": 19, "max": 23 },
+        "humidity": { "min": 60, "target": 75, "max": 85 },
+        "vpd": { "min": 0.4, "target": 0.7, "max": 1.0 },
+        "moisture": { "min": 65, "target": 75, "max": 85 },
+        "light": { "min": 200, "target": 250, "max": 300, "unit": "relative_adc" }
+      },
+      "Vegetative": {
+        "temperature": { "min": 16, "target": 21, "max": 24 },
+        "humidity": { "min": 50, "target": 65, "max": 75 },
+        "vpd": { "min": 0.6, "target": 0.9, "max": 1.2 },
+        "moisture": { "min": 60, "target": 70, "max": 80 },
+        "light": { "min": 250, "target": 300, "max": 350, "unit": "relative_adc" }
+      },
+      "Flowering": {
+        "temperature": { "min": 16, "target": 21, "max": 24 },
+        "humidity": { "min": 45, "target": 60, "max": 70 },
+        "vpd": { "min": 0.7, "target": 1.0, "max": 1.3 },
+        "moisture": { "min": 55, "target": 68, "max": 78 },
+        "light": { "min": 250, "target": 300, "max": 350, "unit": "relative_adc" }
+      },
+      "Fruiting": {
+        "temperature": { "min": 16, "target": 21, "max": 24 },
+        "humidity": { "min": 45, "target": 60, "max": 70 },
+        "vpd": { "min": 0.7, "target": 1.0, "max": 1.3 },
+        "moisture": { "min": 55, "target": 68, "max": 78 },
+        "light": { "min": 250, "target": 300, "max": 350, "unit": "relative_adc" }
+      }
+    }
+  },
+
+  "basil": {
+    "name": "Basil",
+    "scientificName": "Ocimum basilicum",
+    "category": "Herb",
+    "source": "Commercial Greenhouse Herb Production Manual",
+    "stages": {
+      "Seedling": {
+        "temperature": { "min": 20, "target": 23, "max": 27 },
+        "humidity": { "min": 65, "target": 75, "max": 85 },
+        "vpd": { "min": 0.5, "target": 0.8, "max": 1.1 },
+        "moisture": { "min": 65, "target": 75, "max": 85 },
+        "light": { "min": 200, "target": 300, "max": 400, "unit": "relative_adc" }
+      },
+      "Vegetative": {
+        "temperature": { "min": 20, "target": 25, "max": 30 },
+        "humidity": { "min": 50, "target": 60, "max": 75 },
+        "vpd": { "min": 0.8, "target": 1.1, "max": 1.5 },
+        "moisture": { "min": 55, "target": 65, "max": 75 },
+        "light": { "min": 220, "target": 350, "max": 500, "unit": "relative_adc" }
+      },
+      "Flowering": {
+        "temperature": { "min": 20, "target": 24, "max": 28 },
+        "humidity": { "min": 45, "target": 55, "max": 70 },
+        "vpd": { "min": 0.9, "target": 1.2, "max": 1.6 },
+        "moisture": { "min": 50, "target": 60, "max": 72 },
+        "light": { "min": 250, "target": 400, "max": 550, "unit": "relative_adc" }
+      },
+      "Fruiting": {
+        "temperature": { "min": 20, "target": 24, "max": 28 },
+        "humidity": { "min": 45, "target": 55, "max": 70 },
+        "vpd": { "min": 0.9, "target": 1.2, "max": 1.6 },
+        "moisture": { "min": 50, "target": 60, "max": 72 },
+        "light": { "min": 250, "target": 400, "max": 550, "unit": "relative_adc" }
+      }
+    }
+  },
+
+  "tomato": {
+    "name": "Tomato",
+    "scientificName": "Solanum lycopersicum",
+    "category": "Fruit",
+    "source": "Hydroponic Crop Production Standards (Wageningen)",
+    "stages": {
+      "Seedling": {
+        "temperature": { "min": 18, "target": 21, "max": 25 },
+        "humidity": { "min": 60, "target": 70, "max": 80 },
+        "vpd": { "min": 0.6, "target": 0.9, "max": 1.1 },
+        "moisture": { "min": 60, "target": 70, "max": 80 },
+        "light": { "min": 300, "target": 400, "max": 600, "unit": "relative_adc" }
+      },
+      "Vegetative": {
+        "temperature": { "min": 20, "target": 24, "max": 28 },
+        "humidity": { "min": 50, "target": 65, "max": 75 },
+        "vpd": { "min": 0.8, "target": 1.2, "max": 1.5 },
+        "moisture": { "min": 55, "target": 65, "max": 75 },
+        "light": { "min": 350, "target": 500, "max": 800, "unit": "relative_adc" }
+      },
+      "Flowering": {
+        "temperature": { "min": 19, "target": 23, "max": 27 },
+        "humidity": { "min": 45, "target": 60, "max": 70 },
+        "vpd": { "min": 0.9, "target": 1.3, "max": 1.6 },
+        "moisture": { "min": 60, "target": 70, "max": 80 },
+        "light": { "min": 400, "target": 600, "max": 900, "unit": "relative_adc" }
+      },
+      "Fruiting": {
+        "temperature": { "min": 20, "target": 25, "max": 29 },
+        "humidity": { "min": 50, "target": 60, "max": 70 },
+        "vpd": { "min": 1.0, "target": 1.4, "max": 1.7 },
+        "moisture": { "min": 65, "target": 75, "max": 85 },
+        "light": { "min": 450, "target": 700, "max": 1023, "unit": "relative_adc" }
+      }
+    }
+  },
+
+  "cucumber": {
+    "name": "Cucumber",
+    "scientificName": "Cucumis sativus",
+    "category": "Fruit",
+    "source": "Controlled Environment Greenhouse Manual",
+    "stages": {
+      "Seedling": {
+        "temperature": { "min": 20, "target": 23, "max": 27 },
+        "humidity": { "min": 65, "target": 75, "max": 85 },
+        "vpd": { "min": 0.5, "target": 0.8, "max": 1.1 },
+        "moisture": { "min": 65, "target": 75, "max": 85 },
+        "light": { "min": 250, "target": 400, "max": 600, "unit": "relative_adc" }
+      },
+      "Vegetative": {
+        "temperature": { "min": 20, "target": 26, "max": 30 },
+        "humidity": { "min": 55, "target": 70, "max": 80 },
+        "vpd": { "min": 0.7, "target": 1.0, "max": 1.4 },
+        "moisture": { "min": 60, "target": 70, "max": 80 },
+        "light": { "min": 300, "target": 500, "max": 700, "unit": "relative_adc" }
+      },
+      "Flowering": {
+        "temperature": { "min": 21, "target": 25, "max": 29 },
+        "humidity": { "min": 50, "target": 65, "max": 75 },
+        "vpd": { "min": 0.8, "target": 1.1, "max": 1.5 },
+        "moisture": { "min": 60, "target": 72, "max": 82 },
+        "light": { "min": 350, "target": 600, "max": 850, "unit": "relative_adc" }
+      },
+      "Fruiting": {
+        "temperature": { "min": 22, "target": 27, "max": 31 },
+        "humidity": { "min": 60, "target": 70, "max": 80 },
+        "vpd": { "min": 0.8, "target": 1.2, "max": 1.5 },
+        "moisture": { "min": 65, "target": 78, "max": 90 },
+        "light": { "min": 400, "target": 650, "max": 1023, "unit": "relative_adc" }
+      }
+    }
+  },
+
+  "pepper": {
+    "name": "Pepper",
+    "scientificName": "Capsicum annuum",
+    "category": "Fruit",
+    "source": "Solanaceae Indoor Production Guide",
+    "stages": {
+      "Seedling": {
+        "temperature": { "min": 18, "target": 22, "max": 26 },
+        "humidity": { "min": 60, "target": 70, "max": 80 },
+        "vpd": { "min": 0.6, "target": 0.9, "max": 1.2 },
+        "moisture": { "min": 60, "target": 70, "max": 80 },
+        "light": { "min": 300, "target": 400, "max": 600, "unit": "relative_adc" }
+      },
+      "Vegetative": {
+        "temperature": { "min": 20, "target": 25, "max": 30 },
+        "humidity": { "min": 50, "target": 65, "max": 75 },
+        "vpd": { "min": 0.8, "target": 1.1, "max": 1.5 },
+        "moisture": { "min": 55, "target": 65, "max": 75 },
+        "light": { "min": 350, "target": 500, "max": 700, "unit": "relative_adc" }
+      },
+      "Flowering": {
+        "temperature": { "min": 20, "target": 24, "max": 28 },
+        "humidity": { "min": 45, "target": 60, "max": 70 },
+        "vpd": { "min": 0.9, "target": 1.2, "max": 1.6 },
+        "moisture": { "min": 55, "target": 68, "max": 78 },
+        "light": { "min": 400, "target": 600, "max": 850, "unit": "relative_adc" }
+      },
+      "Fruiting": {
+        "temperature": { "min": 20, "target": 25, "max": 29 },
+        "humidity": { "min": 45, "target": 60, "max": 70 },
+        "vpd": { "min": 1.0, "target": 1.3, "max": 1.7 },
+        "moisture": { "min": 60, "target": 72, "max": 82 },
+        "light": { "min": 450, "target": 700, "max": 1023, "unit": "relative_adc" }
+      }
+    }
+  },
+
+  "spinach": {
+    "name": "Spinach",
+    "scientificName": "Spinacia oleracea",
+    "category": "Leafy Green",
+    "source": "Cool-Weather Leafy Greens Database",
+    "stages": {
+      "Seedling": {
+        "temperature": { "min": 10, "target": 15, "max": 20 },
+        "humidity": { "min": 55, "target": 70, "max": 80 },
+        "vpd": { "min": 0.4, "target": 0.7, "max": 1.0 },
+        "moisture": { "min": 65, "target": 75, "max": 85 },
+        "light": { "min": 150, "target": 250, "max": 350, "unit": "relative_adc" }
+      },
+      "Vegetative": {
+        "temperature": { "min": 10, "target": 18, "max": 24 },
+        "humidity": { "min": 50, "target": 65, "max": 75 },
+        "vpd": { "min": 0.5, "target": 0.8, "max": 1.2 },
+        "moisture": { "min": 60, "target": 70, "max": 80 },
+        "light": { "min": 200, "target": 300, "max": 400, "unit": "relative_adc" }
+      },
+      "Flowering": {
+        "temperature": { "min": 10, "target": 16, "max": 22 },
+        "humidity": { "min": 45, "target": 60, "max": 70 },
+        "vpd": { "min": 0.6, "target": 0.9, "max": 1.3 },
+        "moisture": { "min": 55, "target": 68, "max": 78 },
+        "light": { "min": 200, "target": 300, "max": 400, "unit": "relative_adc" }
+      },
+      "Fruiting": {
+        "temperature": { "min": 10, "target": 16, "max": 22 },
+        "humidity": { "min": 45, "target": 60, "max": 70 },
+        "vpd": { "min": 0.6, "target": 0.9, "max": 1.3 },
+        "moisture": { "min": 55, "target": 68, "max": 78 },
+        "light": { "min": 200, "target": 300, "max": 400, "unit": "relative_adc" }
+      }
+    }
+  },
+
+  "radish": {
+    "name": "Radish",
+    "scientificName": "Raphanus sativus",
+    "category": "Root",
+    "source": "Root Crop Indoor Cultivation Metrics",
+    "stages": {
+      "Seedling": {
+        "temperature": { "min": 10, "target": 15, "max": 20 },
+        "humidity": { "min": 55, "target": 70, "max": 80 },
+        "vpd": { "min": 0.5, "target": 0.8, "max": 1.1 },
+        "moisture": { "min": 60, "target": 70, "max": 80 },
+        "light": { "min": 150, "target": 250, "max": 350, "unit": "relative_adc" }
+      },
+      "Vegetative": {
+        "temperature": { "min": 12, "target": 18, "max": 24 },
+        "humidity": { "min": 50, "target": 65, "max": 75 },
+        "vpd": { "min": 0.6, "target": 0.9, "max": 1.3 },
+        "moisture": { "min": 55, "target": 65, "max": 75 },
+        "light": { "min": 200, "target": 300, "max": 450, "unit": "relative_adc" }
+      },
+      "Flowering": {
+        "temperature": { "min": 12, "target": 18, "max": 24 },
+        "humidity": { "min": 45, "target": 60, "max": 70 },
+        "vpd": { "min": 0.7, "target": 1.0, "max": 1.4 },
+        "moisture": { "min": 55, "target": 65, "max": 75 },
+        "light": { "min": 200, "target": 300, "max": 450, "unit": "relative_adc" }
+      },
+      "Fruiting": {
+        "temperature": { "min": 12, "target": 18, "max": 24 },
+        "humidity": { "min": 45, "target": 60, "max": 70 },
+        "vpd": { "min": 0.7, "target": 1.0, "max": 1.4 },
+        "moisture": { "min": 55, "target": 65, "max": 75 },
+        "light": { "min": 200, "target": 300, "max": 450, "unit": "relative_adc" }
+      }
+    }
+  },
+
+  "strawberry": {
+    "name": "Strawberry",
+    "scientificName": "Fragaria × ananassa",
+    "category": "Fruit",
+    "source": "Indoor Berry Research Initiative",
+    "stages": {
+      "Seedling": {
+        "temperature": { "min": 14, "target": 17, "max": 21 },
+        "humidity": { "min": 65, "target": 75, "max": 85 },
+        "vpd": { "min": 0.5, "target": 0.8, "max": 1.0 },
+        "moisture": { "min": 60, "target": 70, "max": 80 },
+        "light": { "min": 400, "target": 600, "max": 800, "unit": "relative_adc" }
+      },
+      "Vegetative": {
+        "temperature": { "min": 16, "target": 20, "max": 24 },
+        "humidity": { "min": 60, "target": 70, "max": 80 },
+        "vpd": { "min": 0.7, "target": 1.0, "max": 1.2 },
+        "moisture": { "min": 60, "target": 70, "max": 80 },
+        "light": { "min": 500, "target": 750, "max": 950, "unit": "relative_adc" }
+      },
+      "Flowering": {
+        "temperature": { "min": 15, "target": 19, "max": 23 },
+        "humidity": { "min": 55, "target": 65, "max": 75 },
+        "vpd": { "min": 0.8, "target": 1.1, "max": 1.3 },
+        "moisture": { "min": 55, "target": 65, "max": 75 },
+        "light": { "min": 600, "target": 800, "max": 1023, "unit": "relative_adc" }
+      },
+      "Fruiting": {
+        "temperature": { "min": 15, "target": 20, "max": 24 },
+        "humidity": { "min": 50, "target": 60, "max": 70 },
+        "vpd": { "min": 0.9, "target": 1.2, "max": 1.4 },
+        "moisture": { "min": 60, "target": 72, "max": 85 },
+        "light": { "min": 650, "target": 850, "max": 1023, "unit": "relative_adc" }
+      }
+    }
+  },
+
+  "green_bean": {
+    "name": "Green Bean",
+    "scientificName": "Phaseolus vulgaris",
+    "category": "Fruit",
+    "source": "Legume Controlled Environment Guidelines",
+    "stages": {
+      "Seedling": {
+        "temperature": { "min": 18, "target": 22, "max": 26 },
+        "humidity": { "min": 60, "target": 70, "max": 80 },
+        "vpd": { "min": 0.6, "target": 0.9, "max": 1.2 },
+        "moisture": { "min": 60, "target": 70, "max": 80 },
+        "light": { "min": 300, "target": 450, "max": 650, "unit": "relative_adc" }
+      },
+      "Vegetative": {
+        "temperature": { "min": 20, "target": 24, "max": 28 },
+        "humidity": { "min": 55, "target": 65, "max": 75 },
+        "vpd": { "min": 0.8, "target": 1.1, "max": 1.4 },
+        "moisture": { "min": 55, "target": 68, "max": 78 },
+        "light": { "min": 400, "target": 600, "max": 850, "unit": "relative_adc" }
+      },
+      "Flowering": {
+        "temperature": { "min": 19, "target": 23, "max": 27 },
+        "humidity": { "min": 50, "target": 60, "max": 70 },
+        "vpd": { "min": 0.9, "target": 1.2, "max": 1.5 },
+        "moisture": { "min": 60, "target": 70, "max": 80 },
+        "light": { "min": 450, "target": 650, "max": 900, "unit": "relative_adc" }
+      },
+      "Fruiting": {
+        "temperature": { "min": 20, "target": 24, "max": 28 },
+        "humidity": { "min": 50, "target": 60, "max": 70 },
+        "vpd": { "min": 1.0, "target": 1.3, "max": 1.6 },
+        "moisture": { "min": 65, "target": 75, "max": 85 },
+        "light": { "min": 500, "target": 700, "max": 1023, "unit": "relative_adc" }
+      }
+    }
+  },
+
+  "mint": {
+    "name": "Mint",
+    "scientificName": "Mentha spp.",
+    "category": "Herb",
+    "source": "Aromatic Herb Greenhouse Handbook",
+    "stages": {
+      "Seedling": {
+        "temperature": { "min": 15, "target": 19, "max": 24 },
+        "humidity": { "min": 60, "target": 75, "max": 85 },
+        "vpd": { "min": 0.4, "target": 0.7, "max": 1.0 },
+        "moisture": { "min": 65, "target": 75, "max": 85 },
+        "light": { "min": 150, "target": 250, "max": 350, "unit": "relative_adc" }
+      },
+      "Vegetative": {
+        "temperature": { "min": 16, "target": 22, "max": 28 },
+        "humidity": { "min": 50, "target": 65, "max": 80 },
+        "vpd": { "min": 0.5, "target": 0.9, "max": 1.3 },
+        "moisture": { "min": 60, "target": 70, "max": 80 },
+        "light": { "min": 200, "target": 300, "max": 450, "unit": "relative_adc" }
+      },
+      "Flowering": {
+        "temperature": { "min": 16, "target": 21, "max": 26 },
+        "humidity": { "min": 45, "target": 60, "max": 75 },
+        "vpd": { "min": 0.6, "target": 1.0, "max": 1.4 },
+        "moisture": { "min": 55, "target": 68, "max": 78 },
+        "light": { "min": 200, "target": 320, "max": 500, "unit": "relative_adc" }
+      },
+      "Fruiting": {
+        "temperature": { "min": 16, "target": 21, "max": 26 },
+        "humidity": { "min": 45, "target": 60, "max": 75 },
+        "vpd": { "min": 0.6, "target": 1.0, "max": 1.4 },
+        "moisture": { "min": 55, "target": 68, "max": 78 },
+        "light": { "min": 200, "target": 320, "max": 500, "unit": "relative_adc" }
+      }
+    }
+  }
+}

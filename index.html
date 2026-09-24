@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Urban Microfarm IoT Dashboard</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-sub: #94a3b8;
+            --accent-blue: #38bdf8;
+            --accent-green: #22c55e;
+            --accent-amber: #f59e0b;
+            --accent-red: #ef4444;
+            --border-color: #334155;
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 20px;
+        }
+
+        .status-pill {
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .status-pill.optimal {
+            background: rgba(34, 197, 94, 0.15);
+            color: var(--accent-green);
+            border: 1px solid var(--accent-green);
+        }
+
+        .status-pill.warning {
+            background: rgba(245, 158, 11, 0.15);
+            color: var(--accent-amber);
+            border: 1px solid var(--accent-amber);
+        }
+
+        .btn {
+            background-color: #3b82f6;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #2563eb;
+        }
+
+        .btn.connected {
+            background-color: #10b981;
+        }
+
+        .btn-secondary {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--border-color);
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid var(--border-color);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .metric-val {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--accent-blue);
+        }
+
+        .metric-val .unit {
+            font-size: 1rem;
+            color: var(--text-sub);
+        }
+
+        .confidence-badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            padding: 3px 8px;
+            border-radius: 4px;
+            margin-top: 8px;
+            font-weight: 600;
+            background: rgba(56, 189, 248, 0.15);
+            color: var(--accent-blue);
+        }
+
+        .confidence-badge.calibrated {
+            background: rgba(34, 197, 94, 0.15);
+            color: var(--accent-green);
+        }
+
+        .actuator-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .actuator-row:last-child {
+            border-bottom: none;
+        }
+
+        .actuator-name {
+            font-weight: 600;
+            display: block;
+        }
+
+        .actuator-reason {
+            font-size: 0.8rem;
+            color: var(--text-sub);
+        }
+
+        .badge-state {
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .badge-state.on {
+            background: var(--accent-green);
+            color: black;
+        }
+
+        .badge-state.off {
+            background: var(--border-color);
+            color: var(--text-sub);
+        }
+
+        .mode-toggle-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .mode-btn {
+            flex: 1;
+            padding: 8px;
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            color: var(--text-sub);
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .mode-btn.active {
+            background: var(--accent-blue);
+            color: black;
+            font-weight: 700;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-body {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            width: 90%;
+            max-width: 500px;
+            border: 1px solid var(--border-color);
+        }
+
+        select,
+        input {
+            width: 100%;
+            padding: 8px 12px;
+            margin: 6px 0 16px 0;
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <div>
+            <h1 style="margin:0;">Urban Microfarm Control Center</h1>
+            <span id="hardware-status-badge" class="status-pill warning">HARDWARE OFFLINE</span>
+        </div>
+        <div>
+            <button id="btn-connect" class="btn" onclick="toggleHardwareConnection()">Connect Hardware</button>
+            <button class="btn btn-secondary" style="border-color: var(--accent-red); color: var(--accent-red);"
+                onclick="restartESP32()">Restart ESP32</button>
+            <button class="btn btn-secondary" onclick="openModal('modal-settings')">Settings</button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Top Metrics Row -->
+        <section class="grid-container">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Temperature</h3>
+                    <span id="status-temp" class="status-pill optimal">🟢 Optimal</span>
+                </div>
+                <div id="val-temp" class="metric-val">-- <span class="unit">°C</span></div>
+                <div id="target-temp" class="actuator-reason">Target: 16–25°C</div>
+                <span id="conf-temp" class="confidence-badge">RELATIVE (SIMULATED)</span>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3>Humidity</h3>
+                    <span id="status-humidity" class="status-pill optimal">🟢 Optimal</span>
+                </div>
+                <div id="val-humidity" class="metric-val">-- <span class="unit">%</span></div>
+                <div id="target-humidity" class="actuator-reason">Target: 55–75%</div>
+                <span id="conf-hum" class="confidence-badge">RELATIVE (SIMULATED)</span>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3>CO2 Level</h3>
+                    <span id="status-co2" class="status-pill optimal">🟢 Optimal</span>
+                </div>
+                <div id="val-co2" class="metric-val">-- <span class="unit">ppm</span></div>
+                <div id="target-co2" class="actuator-reason">Target: 400–1200 ppm</div>
+                <span id="conf-co2" class="confidence-badge">DIRECT (MH-Z19B)</span>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3>VPD (Deficit)</h3>
+                    <span id="status-vpd" class="status-pill optimal">🟢 Optimal</span>
+                </div>
+                <div id="val-vpd" class="metric-val">-- <span class="unit">kPa</span></div>
+                <div id="target-vpd" class="actuator-reason">Target: 0.8–1.2 kPa</div>
+                <span class="confidence-badge">CALCULATED</span>
+            </div>
+
+            <!-- Manual VPD Override Card -->
+            <div class="card" style="border-color: var(--accent-amber);">
+                <div class="card-header">
+                    <h3>Manual VPD Override</h3>
+                    <span id="status-manual-vpd" class="status-pill warning">DISABLED</span>
+                </div>
+                <div style="margin-top: 10px;">
+                    <label>Set VPD Value (kPa):</label>
+                    <input type="number" id="manual-vpd-input" step="0.1" min="0.0" max="3.0" value="1.5"
+                        placeholder="e.g. 1.5">
+                </div>
+                <div style="display: flex; gap: 10px; margin-top: 10px;">
+                    <button class="btn" style="flex: 1;" onclick="applyManualVpd()">Apply VPD</button>
+                    <button class="btn btn-secondary" onclick="disableManualVpd()">Disable</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dynamic Zones Setup -->
+        <section class="grid-container">
+            <!-- Zone 1 -->
+            <div class="card">
+                <div class="card-header">
+                    <h3>Zone 1</h3>
+                    <span id="z1-match-score" style="font-weight:700; color:var(--accent-green);">0% Match</span>
+                </div>
+                <label>Plant Selection:</label>
+                <select id="zone1-plant-select" onchange="onPlantChange(1)"></select>
+
+                <label>Growth Stage:</label>
+                <select id="zone1-stage-select" onchange="onStageChange(1)">
+                    <option value="Vegetative">Vegetative</option>
+                </select>
+
+                <div style="margin-top:15px;">
+                    <div>Soil Moisture: <strong id="z1-val-moisture">-- %</strong></div>
+                    <div id="z1-target-moisture" class="actuator-reason">Target: --%</div>
+                </div>
+                <div style="margin-top:10px;">
+                    <div>Light Index: <strong id="z1-val-light">-- ADC</strong></div>
+                    <div id="z1-target-light" class="actuator-reason">Target: -- ADC</div>
+                </div>
+                <div id="breakdown-bars-container" style="margin-top:15px;"></div>
+            </div>
+
+            <!-- Zone 2 -->
+            <div class="card">
+                <div class="card-header">
+                    <h3>Zone 2</h3>
+                    <span id="z2-match-score" style="font-weight:700; color:var(--accent-green);">0% Match</span>
+                </div>
+                <label>Plant Selection:</label>
+                <select id="zone2-plant-select" onchange="onPlantChange(2)"></select>
+
+                <label>Growth Stage:</label>
+                <select id="zone2-stage-select" onchange="onStageChange(2)">
+                    <option value="Vegetative">Vegetative</option>
+                </select>
+
+                <div style="margin-top:15px;">
+                    <div>Soil Moisture: <strong id="z2-val-moisture">-- %</strong></div>
+                    <div id="z2-target-moisture" class="actuator-reason">Target: --%</div>
+                </div>
+                <div style="margin-top:10px;">
+                    <div>Light Index: <strong id="z2-val-light">-- ADC</strong></div>
+                    <div id="z2-target-light" class="actuator-reason">Target: -- ADC</div>
+                </div>
+                <div id="breakdown-bars-container-2" style="margin-top:15px;"></div>
+            </div>
+
+            <!-- Actuators Panel -->
+            <div class="card">
+                <h3>Actuator Engine</h3>
+                <div class="mode-toggle-group">
+                    <button id="btn-mode-auto" class="mode-btn active" onclick="setControlMode('auto')">AUTO</button>
+                    <button id="btn-mode-manual" class="mode-btn" onclick="setControlMode('manual')">MANUAL</button>
+                </div>
+                <div id="manual-warning-banner" class="actuator-reason hidden"
+                    style="color:var(--accent-amber); margin-bottom:10px;">
+                    ⚠️ Manual override active. Automated rules paused.
+                </div>
+                <div id="actuators-list-container"></div>
+            </div>
+        </section>
+
+        <!-- Graph & Telemetry -->
+        <section class="card">
+            <div class="card-header">
+                <h3>Live Environmental Telemetry</h3>
+                <div>
+                    <button class="btn btn-secondary" onclick="exportCSV()">Export CSV</button>
+                    <button class="btn btn-secondary" onclick="clearLogHistory()">Clear Log</button>
+                </div>
+            </div>
+            <canvas id="telemetryCanvas" width="800" height="200" style="width:100%; height:200px;"></canvas>
+        </section>
+    </main>
+
+    <!-- Settings Modal -->
+    <div id="modal-settings" class="modal hidden">
+        <div class="modal-body">
+            <h2>System Calibration & Settings</h2>
+
+            <label><input type="checkbox" id="sim-mode-toggle" checked onchange="toggleSimulationMode(this)"> Enable
+                Simulation Mode (Fallback)</label>
+            <hr style="border-color:var(--border-color); margin:15px 0;">
+
+            <h3>Zone 1 Soil Moisture Calibration</h3>
+            <label>Dry Baseline ADC (Air):</label>
+            <input type="number" id="z1-cal-dry" value="850">
+            <label>Wet Baseline ADC (Water):</label>
+            <input type="number" id="z1-cal-wet" value="300">
+            <button class="btn" onclick="saveMoistureCalibration(1)">Save Zone 1 Calibration</button>
+
+            <hr style="border-color:var(--border-color); margin:15px 0;">
+            <button class="btn btn-secondary" style="width:100%;" onclick="closeModal('modal-settings')">Close</button>
+        </div>
+    </div>
+
+    <!-- Script Import -->
+    <script src="script.js"></script>
+</body>
+
+</html>
